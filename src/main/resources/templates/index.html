@@ -27,9 +27,9 @@
                   <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
               </select>
           </form>
+          <a class="register-link" sec:authorize="hasRole('ADMIN')" th:href="@{/admin}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 0.75em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-lock"></i><span th:text="#{admin}"></span></a>
           <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/profile}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 0.7em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.6em;align-self: center" class="fa-solid fa-user"></i><span th:text="#{profile}"></span></a>
-          <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/chat}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 1em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-comments"></i><span th:text="#{chat}"></span></a>
-      </div>
+          <a class="register-link" sec:authorize="isAuthenticated()" th:href="@{/chat}" style=";border-radius: 50%;align-self: self-start; margin: 1em;padding: 1em;display: flex; align-items: center; flex-direction: column;text-align: center;"><i style=" font-size: 2.3em;align-self: center" class="fa-solid fa-comments"></i><span th:text="#{chat}"></span></a></div>
       <div class="main">
         <div class="ranking">
           <p class="ranking-header" th:text="#{table_ranking_title}">PREMIER LEAGUE</p>

@@ -4,6 +4,7 @@ import bg.soft_uni.premierlegueapp.exceptions.ResourceNotFoundException;
 import bg.soft_uni.premierlegueapp.models.dtos.LoginSeedDto;
 import bg.soft_uni.premierlegueapp.models.dtos.RegisterSeedDto;
 import bg.soft_uni.premierlegueapp.models.dtos.UserExportDto;
+import bg.soft_uni.premierlegueapp.models.dtos.UserInfoForAdminDto;
 import bg.soft_uni.premierlegueapp.models.entities.Role;
 import bg.soft_uni.premierlegueapp.models.entities.Team;
 import bg.soft_uni.premierlegueapp.models.entities.enums.RoleNames;
@@ -17,7 +18,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -83,5 +86,51 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isValidUsername(String username) {
         return this.userRepository.findByUsername(username).isEmpty();
+    }
+
+    @Override
+    public List<UserInfoForAdminDto> getAllUsers(String email) {
+        return this.userRepository.findAll()
+                .stream()
+                .filter(user->!user.getEmail().equals(email))
+                .map(user->{
+                    UserInfoForAdminDto userInfoForAdminDto = this.modelMapper.map(user, UserInfoForAdminDto.class);
+                    userInfoForAdminDto.setRole(user.getRole().getName().name());
+                    if(user.getRole().getName()==RoleNames.ADMIN){
+                        userInfoForAdminDto.setAdmin(true);
+                    }else{
+                        userInfoForAdminDto.setAdmin(false);
+                    }
+                    return userInfoForAdminDto;
+                }).toList();
+    }
+
+    @Override
+    public void changeRole(long id) {
+        Optional<UserEntity> optionalUserEntity = this.userRepository.findById(id);
+        if(optionalUserEntity.isEmpty()){
+            throw new ResourceNotFoundException("USER NOT FOUND!");
+        }
+        UserEntity userEntity = optionalUserEntity.get();
+        if(userEntity.getRole().getName()==RoleNames.USER){
+            Optional<Role> optionalRole = this.roleRepository.findByName(RoleNames.ADMIN);
+            if(optionalRole.isEmpty()){
+                throw new ResourceNotFoundException("ROLE NOT FOUND!");
+            }
+            Role role = optionalRole.get();
+            userEntity.setRole(role);
+        }
+        this.userRepository.save(userEntity);
+    }
+
+    @Override
+    public void changeUsername(String email, String newUsername) {
+        Optional<UserEntity> optionalUserEntity = this.userRepository.findByEmail(email);
+        if(optionalUserEntity.isEmpty()){
+            throw new ResourceNotFoundException("USER NOT FOUND!");
+        }
+        UserEntity userEntity = optionalUserEntity.get();
+        userEntity.setUsername(newUsername);
+        this.userRepository.save(userEntity);
     }
 }
