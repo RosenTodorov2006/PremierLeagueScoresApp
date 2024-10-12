@@ -6,7 +6,7 @@ PremierLeagueScoresApp is a web application providing live scores from the Engli
 The application offers:
 Live standings and score tables – updated in real-time through REST API requests to an external live score service.
 Dedicated team pages for each Premier League club, featuring sections with details on titles, fan base, and team history.
-User profile page and a fan communication page, where fans can chat with each other, managed by a separate project.
+User profile page and a fan communication page, where fans can chat with each other, managed by a separate project. All pages are responsive.
 
 Technologies:
 Java 11
