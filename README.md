@@ -9,7 +9,7 @@ Dedicated team pages for each Premier League club, featuring sections with detai
 User profile page and a fan communication page, where fans can chat with each other, managed by a separate project. All pages are responsive.
 
 Technologies:
-Java 11
+Java
 Spring Framework (Spring Boot, Spring MVC, Spring Data JPA)
 MySQL database
 JavaScript for frontend interactivity
