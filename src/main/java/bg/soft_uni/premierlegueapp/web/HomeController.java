@@ -2,7 +2,6 @@ package bg.soft_uni.premierlegueapp.web;
 
 import bg.soft_uni.premierlegueapp.models.entities.enums.CompetitionNames;
 import bg.soft_uni.premierlegueapp.services.CompetitionService;
-import bg.soft_uni.premierlegueapp.services.impl.AnthropicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
