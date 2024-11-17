@@ -1,7 +1,7 @@
 package bg.soft_uni.premierlegueapp.services.impl;
 
 import bg.soft_uni.premierlegueapp.configuration.AiApiConfiguration;
-import bg.soft_uni.premierlegueapp.services.sheduling.AiApiConnection;
+import bg.soft_uni.premierlegueapp.services.AiApiConnection;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
