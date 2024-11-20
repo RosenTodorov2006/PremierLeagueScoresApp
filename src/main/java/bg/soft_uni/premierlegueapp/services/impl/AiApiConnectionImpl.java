@@ -28,7 +28,7 @@ public class AiApiConnectionImpl implements AiApiConnection {
             {
                 "model": "gpt-3.5-turbo",
                 "messages": [
-                    {"role": "system", "content": "You are an assistant for football matches and teams related only to the English league. Answer in the same language in which the question is asked."},
+                    {"role": "system", "content": "You are an assistant for football matches and teams related only to the English league. Answer in the same language in which the question is asked.Your name should be AI chatbot Tony."},
                     {"role": "user", "content": "%s"}
                 ]
             }
