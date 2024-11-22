@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class AiApiConnectionImpl implements AiApiConnection {
     private final RestClient restClient;
@@ -19,21 +24,31 @@ public class AiApiConnectionImpl implements AiApiConnection {
         this.aiApiConfiguration = aiApiConfiguration;
     }
 
-    public String getResponse(String prompt) {
+
+    @Override
+    public String getResponse(List<String> messages) {
         String apiUrl = aiApiConfiguration.getApiUrl();
         String apiKey = aiApiConfiguration.getApiKey();
+        String lastMessage = messages.get(messages.size() - 1).split(": ")[1];
 
-        // Създаване на JSON заявка като String
+        // Създаване на заявката с контекста
         String requestBody = """
-            {
-                "model": "gpt-3.5-turbo",
-                "messages": [
-                    {"role": "system", "content": "You are an assistant for football matches and teams related only to the English league. Answer in the same language in which the question is asked.Your name should be AI chatbot Tony."},
-                    {"role": "user", "content": "%s"}
-                ]
-            }
-            """.formatted(prompt);
-        // Изпращане на заявка с RestClient
+        {
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are AI chatbot Tony, an assistant for football matches and teams in the English league only. Answer in the language of the question and keep responses as short as possible, max 10–20 words. Below is the conversation history: %s"
+                },
+                {
+                    "role": "user",
+                    "content": "%s"
+                }
+            ]
+        }
+        """.formatted(messages, lastMessage);  // Записваме последното съобщение на потребителя
+
+        // Изпращане на заявката с RestClient
         String responseBody = this.restClient
                 .post()
                 .uri(apiUrl)
@@ -56,7 +71,20 @@ public class AiApiConnectionImpl implements AiApiConnection {
         }
 
         JsonObject firstChoice = choices.get(0).getAsJsonObject();
-        JsonObject message = firstChoice.getAsJsonObject("message");
-        return message.get("content").getAsString();
+        String aiMessage = firstChoice.getAsJsonObject("message").get("content").getAsString();
+
+        return aiMessage;
+    }
+
+    @Override
+    public List<String> addMessage(List<String> messages, String message) {
+        // Добавяме новото съобщение към съществуващите
+        messages.add(message);
+
+        // Получаваме отговор от AI на новото съобщение
+        String aiResponse = getResponse(messages);
+        messages.add("ai: " + aiResponse);  // Добавяме отговор от AI към съществуващите съобщения
+
+        return messages;
     }
 }

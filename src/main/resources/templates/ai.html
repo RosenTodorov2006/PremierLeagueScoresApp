@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th='http://www.thymeleaf.org' xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -39,48 +39,85 @@
     </style>
 </head>
 <body>
-<section>
-    <div class="container py-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-6">
+<div class="button" style="padding-top: 1em;">
+    <a class="btn btn-primary px-4" style="margin: 1em;" th:href="@{'/'}">Back</a>
+</div>
+<section style="min-height: 90%">
+    <div class="container py-5" style="min-height: 90%">
+        <div class="row d-flex justify-content-center" style="min-height: 35vw">
+            <div class="col-md-10 col-lg-8 col-xl-6" style="min-height: 90%">
                 <div class="card" id="chat2">
                     <div class="card-header d-flex justify-content-between align-items-center p-3">
                         <h5 class="mb-0">AI CHATBOT</h5>
                     </div>
-                    <div class="card-body" data-mdb-perfect-scrollbar-init style="position: relative; min-height: 675px; display: block !important;">
 
-                        <div class="d-flex flex-row justify-content-start" style="display: flex;">
-                            <img src="/images/fai.png"
-                                 alt="avatar 3" style="width: 40px; height: 100%;">
-                            <div style="justify-self: center; align-self: center">
-                                <p class="small p-2 ms-3 mb-1 rounded-3 bg-body-tertiary;" style="text-align: start; margin: 0 !important;">What are you doing
-                                    tomorrow? Can we come up a bar?</p>
+                    <!-- Основната част с чат съобщения -->
+                    <div class="card-body" style="min-height: 400px; display: flex; justify-content: start">
+                        <!-- Динамично показване на съобщения -->
+                        <div th:each="message, iterStat : ${messages}">
+                            <!-- Ако съобщението е от AI -->
+                            <div th:if="${message.startsWith('ai: ')}" class="d-flex flex-row justify-content-start">
+                                <img src="/images/fai.png" alt="avatar 3" style="width: 40px; height: 100%;">
+                                <div>
+                                    <p class="small p-2 ms-3 mb-1 rounded-3 bg-body-tertiary" style="text-align: start;">
+                                        [[${message.substring(4)}]] <!-- Премахваме 'ai: ' от съобщението -->
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Ако съобщението е от потребителя -->
+                            <div th:if="${message.startsWith('user: ')}" class="d-flex flex-row justify-content-end mb-4 pt-1">
+                                <div>
+                                    <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                                        [[${message.substring(6)}]] <!-- Премахваме 'user: ' от съобщението -->
+                                    </p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
                             </div>
                         </div>
-                        <div class="d-flex flex-row justify-content-end mb-4 pt-1">
-                            <div>
-                                <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Long time no see! Tomorrow
-                                    office. will
-                                    be free on sunday.</p>
-                            </div>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
-                                 alt="avatar 1" style="width: 45px; height: 100%;">
-                        </div>
+                    </div>
 
-                    </div>
-                    <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3" style="background-color: rgba(141,141,141,0.5)">
-                        <img src="/images/fai.png"
-                             alt="avatar 3" style="width: 40px; height: 100%;border-radius: 1em;">
-                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                               placeholder="Type message">
-                        <button id="send-btn" class="btn btn-primary" style="padding-block: 0.6em;">Send</button>
-                    </div>
+                    <!-- Частта с текстовото поле за ново съобщение -->
+                <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                    <img src="/images/fai.png"
+                         alt="avatar 3" style="width: 40px; height: 100%;border-radius: 1em;">
+                    <form action="/ai" method="post" class="d-flex w-100" id="chatForm">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                        <div class="form-group w-100">
+                            <input type="text" name="message" id="messageInput" class="form-control form-control-lg" placeholder="Напишете съобщение..." autocomplete="off" minlength="3" required>
+                            <div class="invalid-feedback">
+                                Съобщението трябва да съдържа поне 3 символа!
+                            </div>
+                        </div>
+                        <button type="submit" id="sendButton" class="btn btn-primary ms-2">Изпрати</button>
+                    </form>
                 </div>
-
             </div>
         </div>
 
     </div>
+    </div>
 </section>
+<script>
+    // Функция за скролиране до дъното на чата
+    function scrollToBottom() {
+        var chatBody = document.querySelector(".card-body");
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Скролира до дъното след зареждане на страницата
+    window.onload = scrollToBottom;
+</script>
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        // Деактивиране на бутона за изпращане
+        var sendButton = document.getElementById("sendButton");
+        sendButton.disabled = true;
+
+        // Повторно активиране на бутона след 5 секунди
+        setTimeout(() => sendButton.disabled = false, 5000);
+    });
+</script>
+
 </body>
 </html>

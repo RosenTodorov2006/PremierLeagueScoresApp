@@ -1,0 +1,246 @@
+[33mcommit c90e59677ee79635648b29faf93899063595c7fa[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jun 5 01:15:00 2024 +0300
+
+    Only FrondEnd
+
+[33mcommit 75eef7933f400363bb326586a8d72a333c7ad1d2[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jun 5 01:15:00 2024 +0300
+
+    Only FrondEnd
+
+[33mcommit c948efb66b4b7bb08cf2bdb1571e412930a5164a[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jun 10 19:09:18 2024 +0300
+
+    Add Class
+
+[33mcommit f6b7876d64c2e991c2755532b0d0095016359d4e[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jun 26 22:41:50 2024 +0300
+
+    Add User logic
+
+[33mcommit 49acddab1281e11e35cda2e47f2c70ad5014052f[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jul 3 22:50:49 2024 +0300
+
+    Add User logic
+
+[33mcommit 186572afa657bd95ccd22cd79138cbb6b443570e[m
+Merge: 49acdda c90e596
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jul 3 22:55:22 2024 +0300
+
+    Resolve merge conflicts
+
+[33mcommit 5638f731cd0dc150d85f240bf908482c6f1b907b[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 02:16:48 2024 +0300
+
+    Add User logic
+
+[33mcommit 3b4237a3c0f9cdff4a7fb53833a6fde12810b77a[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 02:41:16 2024 +0300
+
+    Add User logic
+
+[33mcommit d7074c648c483a864604453ec0c5438fb7fffd97[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 03:06:06 2024 +0300
+
+    Add Spring Security
+
+[33mcommit b0e3b8b0e6b8a7d1a4eabb010875bc2613158620[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 03:49:58 2024 +0300
+
+    Logout abd Register buttons logic
+
+[33mcommit 9b8254044e8ab406ca767957290904654cdea247[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 15:56:43 2024 +0300
+
+    Add error login logic
+
+[33mcommit d582d245ca54a5b554bb7a6c886a3fe6ca39526a[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 16:08:19 2024 +0300
+
+    Change login error message
+
+[33mcommit fc6893a9d0c26a1b2a834b64e8586e5dc1015fb8[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 4 21:56:01 2024 +0300
+
+    Add Role
+
+[33mcommit 349923223a056997d4d74876a7a39538d0ca4f1d[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Fri Jul 5 00:33:00 2024 +0300
+
+    Add data implementation
+
+[33mcommit 2ee9885ffb9b1870b0f3398ecac593795fadf237[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Fri Jul 5 02:30:27 2024 +0300
+
+    Add teams info in db
+
+[33mcommit b683f8c2f4a1cbebcb749f0adc0c23a322e2c7a8[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 01:41:35 2024 +0300
+
+    Add thymeleaf in team pages
+
+[33mcommit 578a8dcad0e8ad3afb1c181e5c5c8c443676678a[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 03:47:52 2024 +0300
+
+    Add with thymeleaf small info for clubs.
+
+[33mcommit ba8eacd5d179f3c535ef1b56bd10b445085bec44[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 04:01:09 2024 +0300
+
+    Add Todo to api
+
+[33mcommit e6a49922361c0ff921fb1f981da7799460c4e396[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 04:02:27 2024 +0300
+
+    Add Todo to api
+
+[33mcommit 340b459879758e8e9d5fe13aa96552f5b035eee0[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 04:03:11 2024 +0300
+
+    Add Todo to api
+
+[33mcommit e7181e2ce35938a07a3e7c85dca2ab3736bc1cf2[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sat Jul 6 14:23:27 2024 +0300
+
+    Delete RoleInit
+
+[33mcommit 607cb12e3037b0978d4f81669bf93bb032a7ec5c[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 7 04:36:39 2024 +0300
+
+    Add profile and chat pages
+
+[33mcommit fa1f0086a98c2223b3b55660981ab811b4f8909e[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 7 17:28:57 2024 +0300
+
+    Change ranking design
+
+[33mcommit bc07eba05d0081634db1dc29d5f7987439f2c64e[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 7 18:08:50 2024 +0300
+
+    Change Scheduling
+
+[33mcommit ef8737f8aac4799c89b56b3952f874b9aeec40be[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 7 18:16:33 2024 +0300
+
+    Change Scheduling forbidden words
+
+[33mcommit 60c4a7162f5aa974c94c0f615c79e4b241b1b86e[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 8 19:21:07 2024 +0300
+
+    Add ExceptionHandler and error page
+
+[33mcommit ee4ee3a503aa3f7049a97f3534fc67dbbeb4f2f3[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 8 23:16:20 2024 +0300
+
+    Add part of connection to api
+
+[33mcommit 8800beb6a59703adb3c690836612166b08e77d9f[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 8 23:20:29 2024 +0300
+
+    logic for when there are no matches
+
+[33mcommit 3253915f4e40e3dc02917e15c422adbe17ec8c96[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Tue Jul 9 17:16:59 2024 +0300
+
+    Add polling for taking results and ranking in real time
+
+[33mcommit 506f6c5b574f010cbfeb746744820f05952000ac[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jul 10 02:38:22 2024 +0300
+
+    Change ranking table css
+
+[33mcommit 007a760237de2d0c28289dcb20fa81e78f9c91e5[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 11 13:19:17 2024 +0300
+
+    Add internationalization for home page
+
+[33mcommit 2bf78feacb2706afe148ac14d22ec11aea8e05fb[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Fri Jul 12 18:59:30 2024 +0300
+
+    Fixing I18N
+
+[33mcommit b21523369737c3e3d6fd9429def7d162ec6098e7[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 15 00:00:06 2024 +0300
+
+    Add tests
+
+[33mcommit d0147b040b77058758afef4dd44424a2b7fc86b4[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 15 00:26:01 2024 +0300
+
+    Add test
+
+[33mcommit b86aad2cddc8c36a52ed3bcba12e20f1b07e276c[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Mon Jul 15 02:20:04 2024 +0300
+
+    Add client-side validation
+
+[33mcommit 1a4d507b991b816616bc11d8de892904fe084311[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Tue Jul 16 18:05:43 2024 +0300
+
+    Add matches
+
+[33mcommit 85cd6c66fe8fbd742d3033068479b3b7ff801e2c[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Wed Jul 17 00:39:22 2024 +0300
+
+    Add css for live score table
+
+[33mcommit 885b79bd3fb3efa35950c58d7cad21a9573e02de[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Thu Jul 18 17:56:07 2024 +0300
+
+    Add annotations
+
+[33mcommit ba7018ce2f4ee565a65a0ca70ec604033cc34d7c[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Fri Jul 19 18:59:10 2024 +0300
+
+    Add monitoring with aop
+
+[33mcommit 2862dc4d7c0c147f8fd7f1ac787e1d439ebbeb2f[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 21 21:44:57 2024 +0300
+
+    Transfer chat logic to other app
+
+[33mcommit 20d354fc0c0dea0e6346284472508f2d4fb188d0[m
+Author: Rosen Todorov <122826159+RosenTodorov2006@users.noreply.github.com>
+Date:   Sun Jul 21 22:44:48 2024 +0300
+
+    Delete modelMapper from MessageSe
