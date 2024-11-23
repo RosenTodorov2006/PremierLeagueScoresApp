@@ -239,18 +239,26 @@ main{
     gap: 1em;
 }
 
-@media (max-width: 1300px) {
-    #teamsPages{
-        display: block;
+@media (max-width: 1350px) {
+    main{
+        background-image: url("/images/d768e6894200acbdfc471333a12dac643c3ad64cb032fd9ebef78d6639ca5c8d.jpg");
     }
+
     .prLogo{
         display: block;
     }
-    .header-navbar ul{
-        display: none;
+    .header-navbar ul {
+        display: flex;
+        flex-wrap: wrap; /* Елементите преминават на нов ред при нужда */
+        padding: 0;      /* Можете да регулирате отстоянията според нуждите */
+        margin: 0;
+        list-style: none; /* Премахва стандартните маркери за списък */
     }
-    .header-navbar p{
-        display: none;
+
+    .header-navbar ul li {
+        flex: 1 1 auto; /* Елементите ще се разтягат и свиват, за да се поберат */
+        margin: 5px;    /* Разстояние между елементите */
+        text-align: center; /* Пример за центриране на текста */
     }
     .main{
      display: flex;
@@ -304,7 +312,7 @@ main{
     .middle-container img{
         width: 50%;
     }
-    @media (max-width: 650px) {
+    @media (max-width: 720px) {
         iframe{
             width: 300px;
         }
@@ -327,7 +335,7 @@ main{
             font-size: 10px !important;
         }
     }
-    @media (max-width: 400px) {
+    @media (max-width: 420px) {
         iframe{
             width: 200px;
             height: 125px;
