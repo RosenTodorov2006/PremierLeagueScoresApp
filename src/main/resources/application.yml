@@ -2,8 +2,8 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/liveScoresApp?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: Rt_7811207542
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
   servlet:
     multipart:
       max-file-size: 1MB
@@ -21,11 +21,11 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-  #Cloudinary Properties
-  #cloudinary:
-  #api-key:
-  #api-secret:
-  #cloud-name:
+  # Cloudinary Properties
+  cloudinary:
+    api-key: ${CLOUDINARY_API_KEY}
+    api-secret: ${CLOUDINARY_API_SECRET}
+    cloud-name: ${CLOUDINARY_CLOUD_NAME}
   thymeleaf:
     check-template-location: true
     cache: false
@@ -35,10 +35,10 @@ spring:
       cache-period: 0
 football:
   api:
-    key: 98b87d90b96e4bac9b5b758a5e557508
+    key: ${FOOTBALL_API_KEY}
     url: "https://api.football-data.org/v4/competitions/PL/"
     header: "X-Auth-Token"
 openai:
   api:
-    key:
+    key: ${OPENAI_API_KEY}
     url: "https://api.openai.com/v1/chat/completions"
