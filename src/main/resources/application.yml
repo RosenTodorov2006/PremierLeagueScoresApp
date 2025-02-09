@@ -21,7 +21,6 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-  # Cloudinary Properties
   cloudinary:
     api-key: ${CLOUDINARY_API_KEY}
     api-secret: ${CLOUDINARY_API_SECRET}
