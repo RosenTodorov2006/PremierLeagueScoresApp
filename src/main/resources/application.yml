@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -41,3 +42,25 @@ openai:
   api:
     key: ${OPENAI_API_KEY}
     url: "https://api.openai.com/v1/chat/completions"
+
+# Настройки за грешките
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    whitelabel:
+      enabled: true
+
+# Ниво на логиране за по-подробни грешки
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+
+# За да позволим работа в разработка, ако има нужда от това
+spring.profiles.active: dev
+
+# Application Insights конфигурация за диагностика
+azure:
+  application-insights:
+    instrumentation-key: YOUR_INSTRUMENTATION_KEY
