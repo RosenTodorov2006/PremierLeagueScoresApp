@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/liveScoresApp?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    url: "jdbc:mysql://your-db-host.mysql.database.azure.com:3306/your-db-name?useSSL=true&serverTimezone=UTC"
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
   servlet:
@@ -15,7 +15,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     open-in-view: false
     properties:
       hibernate:
@@ -28,10 +28,10 @@ spring:
     cloud-name: ${CLOUDINARY_CLOUD_NAME}
   thymeleaf:
     check-template-location: true
-    cache: false
-    prefix: file:./src/main/resources/templates/
+    cache: true
+    prefix: classpath:/templates/
     resources:
-      static-locations: file:./src/main/resources/static/
+      static-locations: classpath:/static/
       cache-period: 0
 football:
   api:
