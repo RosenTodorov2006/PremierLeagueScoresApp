@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://premierleagueloi-server.mysql.database.azure.com:3306/premierleagueloi-database?serverTimezone=UTC&sslmode=required&user=dbvnizypwd&password=$SACD2wwSQv18x$O"
+    url: "jdbc:mysql://premierleaguescores-server.mysql.database.azure.com:3306/premierleaguescores-database?serverTimezone=UTC&sslmode=required&user=xdwumppzdg&password=tWi6Ey3znx0Rv$O0"
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
   servlet:
