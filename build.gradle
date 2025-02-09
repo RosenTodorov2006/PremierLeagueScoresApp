@@ -26,7 +26,6 @@ dependencies {
     implementation 'org.modelmapper:modelmapper:3.2.0'
     implementation 'com.google.code.gson:gson'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
-    implementation 'org.flywaydb:flyway-core:8.5.11'
 
     testImplementation 'org.hsqldb:hsqldb'
     runtimeOnly 'com.mysql:mysql-connector-j'
