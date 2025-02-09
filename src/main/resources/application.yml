@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://premierleaguescores-server.mysql.database.azure.com:3306/premierleaguescores-database?serverTimezone=UTC&sslmode=required&user=xdwumppzdg&password=tWi6Ey3znx0Rv$O0"
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: "jdbc:mysql://premierleaguescores-server.mysql.database.azure.com:3306/premierleaguescores-database?serverTimezone=UTC&sslmode=required"
+    username: xdwumppzdg  # Имейл адреса за връзка с базата
+    password: Rt_7811207542  # Новата парола за връзка с базата
   servlet:
     multipart:
       max-file-size: 1MB
