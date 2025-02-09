@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://your-db-host.mysql.database.azure.com:3306/your-db-name?useSSL=true&serverTimezone=UTC"
+    url: "jdbc:mysql://premierleagueloi-server.mysql.database.azure.com:3306/premierleagueloi-database?serverTimezone=UTC&sslmode=required&user=dbvnizypwd&password=$SACD2wwSQv18x$O"
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
   servlet:
