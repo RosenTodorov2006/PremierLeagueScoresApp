@@ -39,7 +39,7 @@ football:
     header: "X-Auth-Token"
 openai:
   api:
-    key: ${OPENAI_API_KEY}
+    keys: ${OPENAI_API_KEY}
     url: "https://api.openai.com/v1/chat/completions"
 
 # Настройки за грешките

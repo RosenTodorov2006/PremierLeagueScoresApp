@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.yml")
 public class AiApiConfiguration {
     //ad
-    @Value("${openai.api.key}")
+    @Value("${openai.api.keys}")
     private String apiKey;
 
     @Value("${openai.api.url}")
