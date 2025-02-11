@@ -1,34 +1,78 @@
 document.addEventListener("DOMContentLoaded", function () {
     checkAndSetLanguage();
 
-    loadStandings();
-    loadLastMatches();
+    // Зареждаме данни веднага след зареждането на страницата
+    loadStandingsAndMatches();
 
+    // Настрояваме интервал за обновяване на данни на всеки 3 минути (180000 милисекунди)
     setInterval(() => {
-        loadStandings();
-        loadLastMatches();
-    }, 49000);
+        loadStandingsAndMatches();
+    }, 180000);  // 3 минути
 
-    function loadStandings() {
-        fetch('/api/standings')
-            .then(response => response.json())
-            .then(data => {
-                displayStandings(data);
+    // Функция за комбиниране на заявките
+    function loadStandingsAndMatches() {
+        Promise.all([
+            fetch('/api/standings'),
+            fetch('/api/last-matches')
+        ])
+            .then(responses => Promise.all(responses.map(response => response.json())))
+            .then(([standingsData, matchesData]) => {
+                displayStandings(standingsData);
+                displayLastMatches(matchesData);
             })
             .catch(error => {
-                console.error('Error fetching standings:', error);
+                console.error('Error fetching data:', error);
             });
     }
 
-    function loadLastMatches() {
-        fetch('/api/last-matches')
-            .then(response => response.json())
-            .then(data => {
-                displayLastMatches(data);
-            })
-            .catch(error => {
-                console.error('Error fetching last matches:', error);
-            });
+    function displayStandings(standings) {
+        const lang = getLanguage();
+        const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
+
+        const standingsTableBody = document.querySelector('#rank tbody');
+        standingsTableBody.innerHTML = '';
+        standings.forEach(team => {
+            const row = document.createElement('tr');
+            const translatedName = teamNames[team.name] || team.name;
+            row.innerHTML = `
+                <th scope="row">${team.position}</th>
+                <td colspan="2">${translatedName}</td>
+                <td>${team.points}</td>
+            `;
+            standingsTableBody.appendChild(row);
+        });
+    }
+
+    function displayLastMatches(matches) {
+        const lang = getLanguage();
+        const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
+        const noDataText = lang === 'bg_BG' ? "-" : "N/A";
+
+        const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
+        lastMatchesTableBody.innerHTML = '';
+
+        matches.forEach(match => {
+            const row = document.createElement('tr');
+            const translatedHomeTeam = teamNames[match.homeTeam] || match.homeTeam;
+            const translatedAwayTeam = teamNames[match.awayTeam] || match.awayTeam;
+            const homeGoals = match.homeGoals !== "N/A" ? match.homeGoals : noDataText;
+            const awayGoals = match.awayGoals !== "N/A" ? match.awayGoals : noDataText;
+
+            const homeTeamCell = document.createElement('td');
+            homeTeamCell.textContent = translatedHomeTeam;
+
+            const resultCell = document.createElement('td');
+            resultCell.textContent = `${homeGoals} : ${awayGoals}`;
+
+            const awayTeamCell = document.createElement('td');
+            awayTeamCell.textContent = translatedAwayTeam;
+
+            row.appendChild(homeTeamCell);
+            row.appendChild(resultCell);
+            row.appendChild(awayTeamCell);
+
+            lastMatchesTableBody.appendChild(row);
+        });
     }
 
     const teamNamesBG = {
@@ -92,55 +136,5 @@ document.addEventListener("DOMContentLoaded", function () {
             url.searchParams.set('lang', lang);
             window.location = url.toString();
         }
-    }
-
-    function displayStandings(standings) {
-        const lang = getLanguage();
-        const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
-
-        const standingsTableBody = document.querySelector('#rank tbody');
-        standingsTableBody.innerHTML = '';
-        standings.forEach(team => {
-            const row = document.createElement('tr');
-            const translatedName = teamNames[team.name] || team.name;
-            row.innerHTML = `
-                <th scope="row">${team.position}</th>
-                <td colspan="2">${translatedName}</td>
-                <td>${team.points}</td>
-            `;
-            standingsTableBody.appendChild(row);
-        });
-    }
-
-    function displayLastMatches(matches) {
-        const lang = getLanguage();
-        const teamNames = lang === 'bg_BG' ? teamNamesBG : teamNamesEN;
-        const noDataText = lang === 'bg_BG' ? "-" : "N/A";
-
-        const lastMatchesTableBody = document.querySelector('#lastMatchesTable tbody');
-        lastMatchesTableBody.innerHTML = '';
-
-        matches.forEach(match => {
-            const row = document.createElement('tr');
-            const translatedHomeTeam = teamNames[match.homeTeam] || match.homeTeam;
-            const translatedAwayTeam = teamNames[match.awayTeam] || match.awayTeam;
-            const homeGoals = match.homeGoals !== "N/A" ? match.homeGoals : noDataText;
-            const awayGoals = match.awayGoals !== "N/A" ? match.awayGoals : noDataText;
-
-            const homeTeamCell = document.createElement('td');
-            homeTeamCell.textContent = translatedHomeTeam;
-
-            const resultCell = document.createElement('td');
-            resultCell.textContent = `${homeGoals} : ${awayGoals}`;
-
-            const awayTeamCell = document.createElement('td');
-            awayTeamCell.textContent = translatedAwayTeam;
-
-            row.appendChild(homeTeamCell);
-            row.appendChild(resultCell);
-            row.appendChild(awayTeamCell);
-
-            lastMatchesTableBody.appendChild(row);
-        });
     }
 });
