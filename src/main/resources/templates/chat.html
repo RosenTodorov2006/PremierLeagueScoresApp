@@ -75,7 +75,7 @@
     </div>
     <div class="input-group">
         <form th:method="post" th:action="@{/chat}" th:object="${addMessageDto}" style="width: 100%; display: flex; gap: 0.4em;">
-            <input th:field="*{userMessage}" type="text" id="message" class="form-control" placeholder="Your message"  style="background-color: #2f2f2f; color: white;">
+            <input th:field="*{userMessage}" type="text" id="message" class="form-control" placeholder="Your message"  style="background-color: #2f2f2f; color: white;" minlength="3" required>
             <small th:if="${#fields.hasErrors('userMessage')}" th:errors="*{userMessage}" style="text-align: center" class="bg-danger text-light rounded">Invalid userMessage!</small>
             <div class="input-group-append">
                 <button id="send-btn" class="btn btn-primary">Send</button>
