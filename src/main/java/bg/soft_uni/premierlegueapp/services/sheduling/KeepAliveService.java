@@ -35,7 +35,7 @@ public class KeepAliveService {
         try {
             ResponseEntity<String> response = this.restClient
                     .post()
-                    .uri(apiUrl + "/v1/chat/completions") // Реалният OpenAI endpoint
+                    .uri(apiUrl) // Реалният OpenAI endpoint
                     .header("Authorization", "Bearer " + apiKey)
                     .header("Content-Type", "application/json")
                     .body(requestBody)
