@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
+import java.util.Map;
+
 @Component
 public class KeepAliveService {
     private final RestClient restClient;
@@ -15,23 +17,33 @@ public class KeepAliveService {
         this.restClient = RestClient.create();
     }
 
-    @Scheduled(fixedRate = 60000) // На всеки 1 минути (600000 милисекунди)
+    @Scheduled(fixedRate = 60000) // На всеки 1 минута
     public void keepConnectionAlive() {
-        String apiUrl = aiApiConfiguration.getApiUrl(); // Заменете с действителния OpenAI API endpoint
-        String apiKey = aiApiConfiguration.getApiKey(); // Заменете с вашия API ключ
-        try {
-            // Изпращане на лека заявка (напр. GET заявка към /ping или друг endpoint)
-            ResponseEntity<Void> response = this.restClient
-                    .get()
-                    .uri(apiUrl + "/ping") // Примерен endpoint за пинг
-                    .header("Authorization", "Bearer " + apiKey)
-                    .retrieve()
-                    .toBodilessEntity();
+        String apiUrl = aiApiConfiguration.getApiUrl(); // OpenAI API URL
+        String apiKey = aiApiConfiguration.getApiKey(); // OpenAI API Key
 
-            // Логване на успешна заявка
+        // Малка dummy заявка
+        Map<String, Object> requestBody = Map.of(
+                "model", "gpt-3.5-turbo",
+                "messages", new Object[]{
+                        Map.of("role", "system", "content", "This is a keep-alive request."),
+                        Map.of("role", "user", "content", "ping")
+                },
+                "max_tokens", 1 // Минимален отговор, за да не хабим ресурси
+        );
+
+        try {
+            ResponseEntity<String> response = this.restClient
+                    .post()
+                    .uri(apiUrl + "/v1/chat/completions") // Реалният OpenAI endpoint
+                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Content-Type", "application/json")
+                    .body(requestBody)
+                    .retrieve()
+                    .toEntity(String.class);
+
             System.out.println("Keep-alive request successful. Status: " + response.getStatusCode());
         } catch (Exception e) {
-            // Логване на грешката
             System.err.println("Keep-alive request failed: " + e.getMessage());
         }
     }
