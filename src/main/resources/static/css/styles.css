@@ -279,6 +279,7 @@ main{
         margin: 0 auto;
         display: flex;
         flex-direction: row;
+        margin-top: 3.5em !important;
    }
     main{
         overflow: visible !important;
@@ -321,6 +322,9 @@ main{
         }
         html{
             font-size: 12px !important;
+        }
+        .middle-container{
+            margin-top: 8em !important;
         }
     }
     @media (max-width: 480px) {
