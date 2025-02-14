@@ -63,8 +63,8 @@ public class AiApiConnectionImpl implements AiApiConnection {
                             .body(String.class)
             );
             try {
-                // Изчакваме отговора до 25 секунди
-                String responseBody = future.get(15, TimeUnit.SECONDS);
+                // Изчакваме отговора до 35 секунди
+                String responseBody = future.get(35, TimeUnit.SECONDS);
                 if (responseBody == null || responseBody.isEmpty()) {
                     throw new RuntimeException("No response received from OpenAI API");
                 }
