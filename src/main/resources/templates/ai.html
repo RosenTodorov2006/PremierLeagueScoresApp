@@ -97,7 +97,7 @@
                     <form action="/ai" method="post" class="d-flex w-100" id="chatForm">
                         <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                         <div class="form-group w-100">
-                            <input type="text" name="message" id="messageInput" class="form-control form-control-lg" placeholder="Напишете съобщение..." autocomplete="off" minlength="3" maxlength="20" required>
+                            <input type="text" name="message" id="messageInput" class="form-control form-control-lg" placeholder="Напишете съобщение..." autocomplete="off" minlength="3" maxlength="55" required>
                             <div class="invalid-feedback">
                                 Съобщението трябва да съдържа поне 3 символа!
                             </div>
