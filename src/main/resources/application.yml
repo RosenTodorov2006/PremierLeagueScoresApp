@@ -4,7 +4,7 @@ spring:
     #За стартиране локално:  url: jdbc:mysql://localhost:3306/liveScoresApp?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     url: "jdbc:mysql://premierleaguescores-server.mysql.database.azure.com:3306/premierleaguescores-database?serverTimezone=UTC&sslmode=required"
     username: xdwumppzdg  # Имейл адреса за връзка с базата
-    password: Rt_7811207542  # Новата парола за връзка с базата
+    password: ${MYSQL_PASSWORD}  # Новата парола за връзка с базата
   servlet:
     multipart:
       max-file-size: 1MB
